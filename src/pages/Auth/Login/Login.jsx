@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import auth from "../../../firebase/firebase.init";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -19,8 +21,18 @@ const Login = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
+    signInWithEmailAndPassword(auth, formData.email, formData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
 
-    if (formData.username !== "" && formData.password !== "") {
+    if (formData.email !== "" && formData.password !== "") {
       setLoggedIn(true);
     }
   };
@@ -30,13 +42,13 @@ const Login = () => {
       {!loggedIn ? (
         <form onSubmit={handleFormSubmit}>
           <div>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username">Email:</label>
             <input
               type="text"
-              id="username"
-              name="username"
-              placeholder="User Name"
-              value={formData.username}
+              id="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
               onChange={handleInputChange}
               required
             />

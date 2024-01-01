@@ -1,0 +1,123 @@
+[
+  {
+    "id": 1,
+    "image": "https://via.placeholder.com/150",
+    "title": "Senior Software Engineer",
+    "companyName": "Tech Solutions Inc.",
+    "position": "Full-time",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ultrices justo, nec cursus ex."
+  },
+  {
+    "id": 2,
+    "image": "https://via.placeholder.com/150",
+    "title": "Product Manager",
+    "companyName": "Global Enterprises Ltd.",
+    "position": "Contract",
+    "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+  },
+  {
+    "id": 3,
+    "image": "https://via.placeholder.com/150",
+    "title": "Data Analyst",
+    "companyName": "Data Analytics Co.",
+    "position": "Part-time",
+    "description": "Fusce lacinia, quam vitae tincidunt aliquet, lorem neque tincidunt lacus, vitae."
+  },
+  {
+    "id": 4,
+    "image": "https://via.placeholder.com/150",
+    "title": "UX/UI Designer",
+    "companyName": "Creative Minds Agency",
+    "position": "Full-time",
+    "description": "Duis consectetur tortor non nunc ullamcorper eleifend. Cras vehicula justo sit amet erat."
+  },
+  {
+    "id": 5,
+    "image": "https://via.placeholder.com/150",
+    "title": "Marketing Specialist",
+    "companyName": "Digital Marketing Co.",
+    "position": "Remote",
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."
+  },
+  {
+    "id": 6,
+    "image": "https://via.placeholder.com/150",
+    "title": "Frontend Developer",
+    "companyName": "WebTech Innovations",
+    "position": "Full-time",
+    "description": "Aenean efficitur enim non metus pharetra, a eleifend lacus fermentum."
+  },
+  {
+    "id": 7,
+    "image": "https://via.placeholder.com/150",
+    "title": "Financial Analyst",
+    "companyName": "Finance Experts Inc.",
+    "position": "Part-time",
+    "description": "Nullam bibendum ipsum nec sem convallis, quis lobortis ligula tempor."
+  },
+  {
+    "id": 8,
+    "image": "https://via.placeholder.com/150",
+    "title": "HR Manager",
+    "companyName": "Human Resources Agency",
+    "position": "Full-time",
+    "description": "Vivamus a eros a justo ultrices euismod a ac odio."
+  },
+  {
+    "id": 9,
+    "image": "https://via.placeholder.com/150",
+    "title": "Sales Representative",
+    "companyName": "SalesPro Solutions",
+    "position": "Remote",
+    "description": "Curabitur rutrum velit nec lectus scelerisque, sed ullamcorper ante consequat."
+  },
+  {
+    "id": 10,
+    "image": "https://via.placeholder.com/150",
+    "title": "Content Writer",
+    "companyName": "Content Creators Co.",
+    "position": "Freelance",
+    "description": "Mauris sit amet elit malesuada, laoreet enim a, consectetur libero."
+  },
+
+  {
+    "id": 11,
+    "image": "https://via.placeholder.com/150",
+    "title": "Senior Software Engineer",
+    "companyName": "Tech Solutions Inc.",
+    "position": "Full-time",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae ultrices justo, nec cursus ex."
+  },
+  {
+    "id": 12,
+    "image": "https://via.placeholder.com/150",
+    "title": "Product Manager",
+    "companyName": "Global Enterprises Ltd.",
+    "position": "Contract",
+    "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+  },
+  {
+    "id": 13,
+    "image": "https://via.placeholder.com/150",
+    "title": "Data Analyst",
+    "companyName": "Data Analytics Co.",
+    "position": "Part-time",
+    "description": "Fusce lacinia, quam vitae tincidunt aliquet, lorem neque tincidunt lacus, vitae."
+  },
+  {
+    "id": 14,
+    "image": "https://via.placeholder.com/150",
+    "title": "UX/UI Designer",
+    "companyName": "Creative Minds Agency",
+    "position": "Full-time",
+    "description": "Duis consectetur tortor non nunc ullamcorper eleifend. Cras vehicula justo sit amet erat."
+  },
+  {
+    "id": 15,
+    "image": "https://via.placeholder.com/150",
+    "title": "Marketing Specialist",
+    "companyName": "Digital Marketing Co.",
+    "position": "Remote",
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae."
+  }
+]

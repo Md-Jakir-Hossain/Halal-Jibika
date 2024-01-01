@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Signup.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -15,35 +15,35 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { AuthContext } from "../../../contextApi/ContextProvider";
+import { Toastify } from "toastify";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const provider = new GoogleAuthProvider();
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth, {
-      sendEmailVerification: true,
-    });
 
   const navigate = useNavigate();
   const [updateProfile, updating] = useUpdateProfile(auth);
+  const { createUser, userUpdateProfile } = useContext(AuthContext);
 
-  if (loading || updating) {
-    return <Loading></Loading>;
-  }
+  // if (loading || updating) {
+  //   return <Loading></Loading>;
+  // }
 
-  let errorElement;
-  if (error) {
-    errorElement = <p>{error?.message}</p>;
-  }
+  // let errorElement;
+  // if (error) {
+  //   errorElement = <p>{error?.message}</p>;
+  // }
 
-  if (user) {
-    navigate("/");
-  }
+  // if (user) {
+  //   navigate("/");
+  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,13 +55,26 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPass) {
-      return toast.error("Password doesn't match");
-    }
-    await createUserWithEmailAndPassword(email, password);
-    await updateProfile({ displayName: name });
-    return toast.success("Sign Up Successfully!");
+    console.log(formData);
+    createUser(formData.email, formData.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        userUpdateProfile(formData.name)
+          .then(() => {
+            toast("update Profile name");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  // ========== Handler Google =========
   const handleGoogle = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -76,6 +89,7 @@ const Signup = () => {
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
   };
+  // ========== Handler Google =========
   const gitProvider = new GithubAuthProvider();
   const handleGithub = () => {
     signInWithPopup(auth, provider)
@@ -101,13 +115,13 @@ const Signup = () => {
           <h2>Registration Form</h2>
           <hr />
           <div>
-            <label htmlFor="fullName">Full Name:</label>
+            <label htmlFor="name">Full Name:</label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
+              id="name"
+              name="name"
               placeholder="Name"
-              value={formData.fullName}
+              value={formData.name}
               onChange={handleChange}
               required
             />
