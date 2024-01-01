@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: auto;
+}
+.img {
+  flex-basis: 50%;
+}
+.img img {
+  width: 100%;
+}

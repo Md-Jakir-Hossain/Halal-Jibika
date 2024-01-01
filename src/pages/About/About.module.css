@@ -1,0 +1,30 @@
+.aboutPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.aboutPage h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.aboutPage p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Additional Styles */
+/* Adjustments for links, if present */
+.aboutPage a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.aboutPage a:hover {
+  text-decoration: underline;
+}
