@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  useLoaderData,
+  useNavigate,
+  useParams,
+  useRouteLoaderData,
+} from "react-router-dom";
 import styles from "./UpdateJob.module.css";
 import axios from "axios";
 
 const UpdateJob = () => {
-  const [update, setUpdate] = useState();
-  const loadUpdate = useLoaderData();
-
-  const [formData, setFormData] = useState(loadUpdate.data);
-
+  const id = +useParams().updateId;
+  const jobs = useRouteLoaderData("root").data;
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState(jobs.find((job) => job.id === id));
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -20,10 +24,10 @@ const UpdateJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const postJobs = await axios.put(
-      `http://localhost:9000/jobs/${loadUpdate.data.id}`,
+      `http://localhost:9000/jobs/${id}`,
       formData
     );
-
+    navigate("/jobs");
     setFormData({
       title: "",
       logo: "",

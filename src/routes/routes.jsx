@@ -16,6 +16,10 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    id: "root",
+    loader: () => {
+      return axios.get(`http://localhost:9000/jobs/`);
+    },
     children: [
       {
         path: "/",
@@ -28,16 +32,10 @@ const routes = createBrowserRouter([
       {
         path: "/details/:id",
         element: <Details />,
-        loader: ({ params }) => {
-          return axios.get(`http://localhost:9000/jobs/${params.id}`);
-        },
       },
       {
         path: "/update/:updateId",
         element: <UpdateJob />,
-        loader: ({ params }) => {
-          return axios.get(`http://localhost:9000/jobs/${params.updateId}`);
-        },
       },
       {
         path: "/about",

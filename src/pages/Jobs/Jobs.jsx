@@ -1,26 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Job from "../Job/Job";
 import styles from "./Jobs.module.css";
-import axios from "axios";
+import { useRouteLoaderData } from "react-router-dom";
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get("http://localhost:9000/jobs");
-        setJobs(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  const [jobs, setJobs] = useState(useRouteLoaderData("root").data);
 
   return (
     <div className={styles.card}>
       {jobs.map((job) => (
-        <Job key={job.id} job={job} />
+        <Job key={job.id} setJobs={setJobs} job={job} />
       ))}
     </div>
   );

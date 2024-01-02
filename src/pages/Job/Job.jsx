@@ -4,7 +4,8 @@ import styles from "./Job.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Job = ({ job }) => {
+const Job = ({ job, setJobs }) => {
+  console.log(job);
   const { id, logo, title, companyName, position, description } = job;
   const deleteItem = async (id) => {
     await axios.delete(`http://localhost:9000/jobs/${id}`);
@@ -24,7 +25,14 @@ const Job = ({ job }) => {
         <Link to={`/details/${id}`}>
           <button>Details</button>
         </Link>
-        <button onClick={() => deleteItem(id)}>delete</button>
+        <button
+          onClick={() => {
+            setJobs((prevJobs) => prevJobs.filter((job) => job.id !== id));
+            deleteItem(id);
+          }}
+        >
+          delete
+        </button>
       </div>
     </div>
   );
