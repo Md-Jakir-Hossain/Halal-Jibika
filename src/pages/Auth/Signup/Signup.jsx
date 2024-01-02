@@ -7,20 +7,15 @@ import { useNavigate } from "react-router-dom";
 import signup from "../../../assets/image/Signup.gif";
 import {
   useCreateUserWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Loading from "../../../components/Loading/Loading";
-import {
-  GithubAuthProvider,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { AuthContext } from "../../../contextApi/ContextProvider";
-import { Toastify } from "toastify";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-  const provider = new GoogleAuthProvider();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,22 +23,8 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const navigate = useNavigate();
   const [updateProfile, updating] = useUpdateProfile(auth);
   const { createUser, userUpdateProfile } = useContext(AuthContext);
-
-  // if (loading || updating) {
-  //   return <Loading></Loading>;
-  // }
-
-  // let errorElement;
-  // if (error) {
-  //   errorElement = <p>{error?.message}</p>;
-  // }
-
-  // if (user) {
-  //   navigate("/");
-  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,38 +55,31 @@ const Signup = () => {
       });
   };
 
-  // ========== Handler Google =========
-  const handleGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-      });
-  };
-  // ========== Handler Google =========
-  const gitProvider = new GithubAuthProvider();
-  const handleGithub = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GithubAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+  const [signInWithGithub, githubUser, githubLoading, githubError] =
+    useSignInWithGithub(auth);
 
-        const user = result.user;
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GithubAuthProvider.credentialFromError(error);
-      });
-  };
+  const navigate = useNavigate();
+
+  let errorElement;
+  if (googleLoading || githubLoading) {
+    return <Loading></Loading>;
+  }
+  if (googleError || githubError) {
+    errorElement = (
+      <p className="text-red-600">
+        Error: {googleError?.message} {githubError?.message}
+      </p>
+    );
+  }
+
+  if (googleUser || githubUser) {
+    navigate("/");
+    toast.success(`Log In Successfully`, {
+      toastId: "success1",
+    });
+  }
 
   return (
     <div className={styles.signupForm}>
@@ -166,11 +140,11 @@ const Signup = () => {
         </form>
         <fieldset>
           <legend>or</legend>
-          <button onClick={handleGoogle} className={styles.google}>
+          <button onClick={() => signInWithGoogle()} className={styles.google}>
             <FcGoogle fontSize="20px" />
             Sign up with Google
           </button>
-          <button onClick={handleGithub} className={styles.github}>
+          <button onClick={() => signInWithGithub()} className={styles.github}>
             <FaGithub fontSize="20px" color="black" />
             Sign up with Github
           </button>

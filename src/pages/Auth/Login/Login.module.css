@@ -6,6 +6,9 @@
   border-radius: 5px;
   background-color: #f9f9f9;
 }
+.login h3 {
+  text-align: center;
+}
 
 label {
   display: block;
@@ -23,6 +26,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
+  width: 100%;
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
@@ -38,4 +42,14 @@ button[type="submit"]:hover {
 .welcome-message {
   font-weight: bold;
   margin-top: 20px;
+}
+.login p {
+  text-align: right;
+}
+.btn {
+  background: #45a049;
+  color: #fff;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
 }

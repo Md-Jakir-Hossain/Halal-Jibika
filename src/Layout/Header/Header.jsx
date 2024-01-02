@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import { FaBars } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase/firebase.init";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
+  console.log(user);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -55,6 +59,12 @@ const Header = () => {
               Log In
             </NavLink>
           </li>
+          <div className={styles.profile}>
+            <span>{user?.displayName}</span>
+            <span>
+              {user?.photoURL ? <img src={user?.photoURL}></img> : ""}
+            </span>
+          </div>
         </div>
       </ul>
     </div>

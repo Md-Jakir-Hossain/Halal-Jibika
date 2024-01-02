@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../firebase/firebase.init";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +40,7 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
+      <h3>Log In</h3>
       {!loggedIn ? (
         <form onSubmit={handleFormSubmit}>
           <div>
@@ -70,7 +72,10 @@ const Login = () => {
       ) : (
         <p>Welcome, {formData.username}! You have successfully logged in.</p>
       )}
-      <button>Create new account</button>
+      <p>Don't have an account?</p>
+      <Link to="/signup">
+        <button className={styles.btn}>Create new account</button>
+      </Link>
     </div>
   );
 };

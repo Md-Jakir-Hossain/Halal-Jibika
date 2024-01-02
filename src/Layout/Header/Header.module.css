@@ -46,6 +46,16 @@
   color: #fff;
   display: block;
 }
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.profile img {
+  width: 2rem;
+  border-radius: 2pc;
+}
 
 @media (max-width: 980px) {
   .nav_icon {

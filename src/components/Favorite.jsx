@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./../pages/Home/Home";
+import AddJobs from "../pages/AddJobs/AddJobs";
 
 const Favorite = () => {
   return (
     <div>
-      <Home />
+      <AddJobs />
     </div>
   );
 };
