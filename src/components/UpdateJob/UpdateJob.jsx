@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import styles from "./AddJobs.module.css";
+import { useLoaderData } from "react-router-dom";
+import styles from "./UpdateJob.module.css";
 import axios from "axios";
 
-const AddJobs = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    logo: "",
-    companyName: "",
-    position: "",
-    description: "",
-  });
+const UpdateJob = () => {
+  const [update, setUpdate] = useState();
+  const loadUpdate = useLoaderData();
+
+  const [formData, setFormData] = useState(loadUpdate.data);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +19,10 @@ const AddJobs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const postJobs = await axios.post("http://localhost:9000/jobs", formData);
+    const postJobs = await axios.put(
+      `http://localhost:9000/jobs/${loadUpdate.data.id}`,
+      formData
+    );
 
     setFormData({
       title: "",
@@ -90,4 +91,4 @@ const AddJobs = () => {
   );
 };
 
-export default AddJobs;
+export default UpdateJob;

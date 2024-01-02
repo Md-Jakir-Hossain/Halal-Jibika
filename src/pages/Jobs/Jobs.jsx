@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Job from "../Job/Job";
 import styles from "./Jobs.module.css";
+import axios from "axios";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:9000/jobs");
-        const data = await response.json();
+        const { data } = await axios.get("http://localhost:9000/jobs");
         setJobs(data);
       } catch (error) {
         console.log(error);

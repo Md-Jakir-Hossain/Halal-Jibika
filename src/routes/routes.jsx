@@ -8,6 +8,9 @@ import Signup from "../pages/Auth/Signup/Signup";
 import NotFound from "../pages/NotFound/NotFound";
 import Favorite from "../components/Favorite";
 import Login from "../pages/Auth/Login/Login";
+import Details from "../components/Details/Details";
+import axios from "axios";
+import UpdateJob from "../components/UpdateJob/UpdateJob";
 
 const routes = createBrowserRouter([
   {
@@ -21,6 +24,20 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
+        loader: ({ params }) => {
+          return axios.get(`http://localhost:9000/jobs/${params.id}`);
+        },
+      },
+      {
+        path: "/update/:updateId",
+        element: <UpdateJob />,
+        loader: ({ params }) => {
+          return axios.get(`http://localhost:9000/jobs/${params.updateId}`);
+        },
       },
       {
         path: "/about",
