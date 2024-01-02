@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 const Mainlayout = () => {
   const navigation = useNavigation();
   return (
-    <div>
+    <div className="container">
       <Header />
       <div>{navigation.state === "loading" ? <Loading /> : <Outlet />}</div>
       <Footer />

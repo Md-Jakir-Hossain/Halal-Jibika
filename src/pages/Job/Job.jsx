@@ -11,28 +11,30 @@ const Job = ({ job, setJobs }) => {
     await axios.delete(`http://localhost:9000/jobs/${id}`);
   };
   return (
-    <div className={styles.singleCard}>
-      <div className={styles.cardContent}>
-        <div className={styles.img}>
-          <img src={logo} alt="" />
+    <div className={styles.container}>
+      <div className={styles.singleCard}>
+        <div className={styles.cardContent}>
+          <div className={styles.img}>
+            <img src={logo} alt="" />
+          </div>
+          <div className={styles.text}>
+            {/* <h1>{title}</h1> */}
+            <h2>{companyName}</h2>
+            <h4>{position}</h4>
+            {/* <p>{description}</p> */}
+          </div>
+          <Link to={`/details/${id}`}>
+            <button>Details</button>
+          </Link>
+          <button
+            onClick={() => {
+              setJobs((prevJobs) => prevJobs.filter((job) => job.id !== id));
+              deleteItem(id);
+            }}
+          >
+            delete
+          </button>
         </div>
-        <div className={styles.text}>
-          <h1>{title}</h1>
-          <h2>{companyName}</h2>
-          <h4>{position}</h4>
-          <p>{description}</p>
-        </div>
-        <Link to={`/details/${id}`}>
-          <button>Details</button>
-        </Link>
-        <button
-          onClick={() => {
-            setJobs((prevJobs) => prevJobs.filter((job) => job.id !== id));
-            deleteItem(id);
-          }}
-        >
-          delete
-        </button>
       </div>
     </div>
   );

@@ -38,59 +38,61 @@ const UpdateJob = () => {
   };
 
   return (
-    <div className={styles.dataForm}>
-      <form className={styles.jobsForm} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="logo">Logo:</label>
-          <input
-            type="text"
-            id="logo"
-            name="logo"
-            value={formData.logo}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="companyName">Company Name:</label>
-          <input
-            type="text"
-            id="companyName"
-            name="companyName"
-            value={formData.companyName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="position">Position:</label>
-          <input
-            type="text"
-            id="position"
-            name="position"
-            value={formData.position}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div>
+      <div className={styles.dataForm}>
+        <form className={styles.jobsForm} onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="logo">Logo:</label>
+            <input
+              type="text"
+              id="logo"
+              name="logo"
+              value={formData.logo}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="companyName">Company Name:</label>
+            <input
+              type="text"
+              id="companyName"
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="position">Position:</label>
+            <input
+              type="text"
+              id="position"
+              name="position"
+              value={formData.position}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="description">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+            />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };

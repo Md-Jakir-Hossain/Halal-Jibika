@@ -1,3 +1,11 @@
+.loginForm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.loginForm form {
+  max-width: 300px;
+}
 .login {
   max-width: 400px;
   margin: 0 auto;
@@ -52,4 +60,13 @@ button[type="submit"]:hover {
   padding: 5px;
   border: none;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+  }
+  .loginForm form {
+    width: 100%;
+  }
 }

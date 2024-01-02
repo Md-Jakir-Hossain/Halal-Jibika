@@ -7,10 +7,12 @@ const Jobs = () => {
   const [jobs, setJobs] = useState(useRouteLoaderData("root").data);
 
   return (
-    <div className={styles.card}>
-      {jobs.map((job) => (
-        <Job key={job.id} setJobs={setJobs} job={job} />
-      ))}
+    <div className={styles.container}>
+      <div className={styles.card}>
+        {jobs.map((job) => (
+          <Job key={job.id} setJobs={setJobs} job={job} />
+        ))}
+      </div>
     </div>
   );
 };

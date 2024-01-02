@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  Link,
-  useLoaderData,
-  useParams,
-  useRouteLoaderData,
-} from "react-router-dom";
-import styles from "../../pages/Job/Job.module.css";
+import { Link, useParams, useRouteLoaderData } from "react-router-dom";
+import styles from "./Details.module.css";
 
 const Details = () => {
   const paramId = +useParams().id;
@@ -14,7 +9,7 @@ const Details = () => {
     (job) => job.id === paramId
   );
   return (
-    <>
+    <div className={styles.details}>
       <div className={styles.singleCard}>
         <div className={styles.cardContent}>
           <div className={styles.img}>
@@ -26,14 +21,11 @@ const Details = () => {
             <h4>{position}</h4>
             <p>{description}</p>
           </div>
-          <Link to={`/details/${id}`}>
-            <button>Details</button>
-          </Link>
           <Link to={`/update/${id}`}>update</Link>
           delete
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
