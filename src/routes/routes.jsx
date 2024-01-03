@@ -11,6 +11,7 @@ import Login from "../pages/Auth/Login/Login";
 import Details from "../components/Details/Details";
 import axios from "axios";
 import UpdateJob from "../components/UpdateJob/UpdateJob";
+import AddJobs from "../pages/AddJobs/AddJobs";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const routes = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
+      },
+      {
+        path: "/addjobs",
+        element: <AddJobs />,
       },
       {
         path: "/details/:id",

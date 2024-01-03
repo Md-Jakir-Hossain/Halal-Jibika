@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Job.module.css";
-
+import { MdOutlineFavoriteBorder } from "react-icons/md";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -12,8 +12,17 @@ const Job = ({ job, setJobs }) => {
   };
   return (
     <div className={styles.container}>
-      <div className={styles.singleCard}>
-        <div className={styles.cardContent}>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="3000"
+        className={styles.singleCard}
+      >
+        <div
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500"
+          className={styles.cardContent}
+        >
           <div className={styles.img}>
             <img src={logo} alt="" />
           </div>
@@ -32,7 +41,7 @@ const Job = ({ job, setJobs }) => {
               deleteItem(id);
             }}
           >
-            delete
+            <MdOutlineFavoriteBorder />
           </button>
         </div>
       </div>

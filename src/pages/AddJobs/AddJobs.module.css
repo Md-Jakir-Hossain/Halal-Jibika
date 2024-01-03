@@ -1,6 +1,9 @@
 .dataForm {
   margin: 2rem 0;
 }
+.jobsForm h2 {
+  text-align: center;
+}
 .jobsForm {
   max-width: 400px;
   margin: 0 auto;

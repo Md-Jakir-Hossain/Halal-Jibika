@@ -7,7 +7,7 @@ import auth from "../../firebase/firebase.init";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-  console.log(user);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -31,6 +31,11 @@ const Header = () => {
         <li>
           <NavLink to="/jobs" onClick={toggleMenu}>
             Jobs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/addjobs" onClick={toggleMenu}>
+            Add Job
           </NavLink>
         </li>
         <li>

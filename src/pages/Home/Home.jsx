@@ -4,8 +4,13 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   return (
-    <div className={styles.home}>
-      <div className={styles.text}>
+    <div data-aos="zoom-in-right" className={styles.home}>
+      <div
+        data-aos="fade-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-linear"
+        className={styles.text}
+      >
         <h3>Welcome to Halal Jibika</h3>
         <h1>
           Find the job of

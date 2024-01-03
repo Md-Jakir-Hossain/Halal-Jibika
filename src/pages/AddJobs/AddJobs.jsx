@@ -39,6 +39,7 @@ const AddJobs = () => {
     <div className={styles.container}>
       <div className={styles.dataForm}>
         <form className={styles.jobsForm} onSubmit={handleSubmit}>
+          <h2>Add job</h2>
           <div>
             <label htmlFor="title">Title:</label>
             <input
@@ -82,6 +83,7 @@ const AddJobs = () => {
           <div>
             <label htmlFor="description">Description:</label>
             <textarea
+              onResize={"none"}
               id="description"
               name="description"
               value={formData.description}
