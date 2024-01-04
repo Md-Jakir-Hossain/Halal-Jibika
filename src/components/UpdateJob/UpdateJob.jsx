@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useParams, useRouteLoaderData, Form } from "react-router-dom";
 import styles from "./UpdateJob.module.css";
 

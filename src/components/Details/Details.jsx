@@ -6,6 +6,8 @@ import {
   useSubmit,
 } from "react-router-dom";
 import styles from "./Details.module.css";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 const Details = () => {
   const paramId = +useParams().id;
@@ -33,9 +35,15 @@ const Details = () => {
             <h4>{position}</h4>
             <p>{description}</p>
           </div>
-          <button>Apply Now</button>
-          <Link to={`/update/${id}`}>update</Link>
-          <button onClick={deleteItem}>delete</button>
+          <div className={styles.detailsBtn}>
+            <button>Apply Now</button>
+            <Link to={`/update/${id}`}>
+              <FaEdit color="black" />
+            </Link>
+            <button onClick={deleteItem}>
+              <RiDeleteBin2Line color="red" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

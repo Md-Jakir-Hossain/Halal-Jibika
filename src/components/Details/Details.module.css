@@ -1,5 +1,6 @@
 .details {
-  margin-top: 2rem;
+  max-width: 20rem;
+  margin: 2rem auto;
 }
 .singleCard {
   border: 1px solid #ccc;
@@ -47,6 +48,15 @@
   margin-top: 10px;
   color: #777;
   font-size: 0.9rem;
+}
+.detailsBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.detailsBtn button {
+  border: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

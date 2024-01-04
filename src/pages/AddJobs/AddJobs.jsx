@@ -26,7 +26,7 @@ const AddJobs = () => {
           </div>
           <div>
             <label htmlFor="description">Description:</label>
-            <textarea onResize={"none"} id="description" name="description" />
+            <textarea id="description" name="description" />
           </div>
           <button type="submit">Submit</button>
         </Form>

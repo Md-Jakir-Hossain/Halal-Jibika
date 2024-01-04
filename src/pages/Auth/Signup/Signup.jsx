@@ -16,6 +16,7 @@ import { AuthContext } from "../../../contextApi/ContextProvider";
 import { toast } from "react-toastify";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,14 +54,13 @@ const Signup = () => {
       .catch((error) => {
         console.log(error);
       });
+    navigate("/login");
   };
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(auth);
-
-  const navigate = useNavigate();
 
   let errorElement;
   if (googleLoading || githubLoading) {

@@ -33,6 +33,7 @@ textarea {
 
 .jobsForm textarea {
   height: 100px;
+  resize: none;
 }
 
 .jobsForm button {

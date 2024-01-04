@@ -34,9 +34,9 @@ const Login = () => {
         console.log(errorMessage);
       });
 
-    if (formData.email !== "" && formData.password !== "") {
-      setLoggedIn(true);
-    }
+    // if (formData.email !== "" && formData.password !== "") {
+    //   setLoggedIn(true);
+    // }
   };
 
   return (
