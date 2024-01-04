@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useLoaderData, useRouteLoaderData } from "react-router-dom";
-import style from "../Jobs/jobs.module.css";
+import { useRouteLoaderData } from "react-router-dom";
+import style from "./Applied.module.css";
 import Job from "./../Job/Job";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
