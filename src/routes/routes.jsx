@@ -9,37 +9,43 @@ import NotFound from "../pages/NotFound/NotFound";
 import Favorite from "../components/Favorite";
 import Login from "../pages/Auth/Login/Login";
 import Details from "../components/Details/Details";
-import axios from "axios";
 import UpdateJob from "../components/UpdateJob/UpdateJob";
 import AddJobs from "../pages/AddJobs/AddJobs";
+import {
+  delteRequest,
+  getRequest,
+  postRequest,
+  updateRequest,
+} from "./routes-actions";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     id: "root",
-    loader: () => {
-      return axios.get(`http://localhost:9000/jobs/`);
-    },
+    loader: getRequest,
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "/jobs",
+        path: "jobs",
         element: <Jobs />,
       },
       {
         path: "/addjobs",
+        action: postRequest,
         element: <AddJobs />,
       },
       {
         path: "/details/:id",
+        action: delteRequest,
         element: <Details />,
       },
       {
         path: "/update/:updateId",
+        action: updateRequest,
         element: <UpdateJob />,
       },
       {
@@ -54,15 +60,15 @@ const routes = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "/signup",
-    element: <Signup />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
   },
   {
     path: "*",

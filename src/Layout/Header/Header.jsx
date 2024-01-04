@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Header.module.css";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
+import { navLinks } from "../../routes/nav-links";
 import auth from "../../firebase/firebase.init";
+import styles from "./Header.module.css";
 
 const Header = () => {
   const [user] = useAuthState(auth);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const navigate = useNavigate();
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const logout = () => signOut(auth);
 
   return (
     <div className={`${styles.header} ${isMenuOpen ? styles.open : ""}`}>
@@ -23,47 +25,27 @@ const Header = () => {
         <FaBars className={`${styles.nav_icon}`} />
       </div>
       <ul className={`${styles.ul} ${isMenuOpen ? styles.showMenu : ""}`}>
-        <li>
-          <NavLink exact to="/" onClick={toggleMenu}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/jobs" onClick={toggleMenu}>
-            Jobs
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/addjobs" onClick={toggleMenu}>
-            Add Job
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/about" onClick={toggleMenu}>
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/favorite" onClick={toggleMenu}>
-            Favorite
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact" onClick={toggleMenu}>
-            Contact
-          </NavLink>
-        </li>
-        <div className={`${styles.auth}`}>
-          <li>
-            <NavLink to="/signup" onClick={toggleMenu}>
-              Sign Up
+        {navLinks.map((link) => (
+          <li key={link.name}>
+            <NavLink exact to={link.path} onClick={toggleMenu}>
+              {link.name}
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/login" onClick={toggleMenu}>
+        ))}
+
+        <div className={styles.auth}>
+          {user ? (
+            <li onClick={logout}>Logout</li>
+          ) : (
+            <li
+              onClick={() => {
+                toggleMenu();
+                navigate("/login");
+              }}
+            >
               Log In
-            </NavLink>
-          </li>
+            </li>
+          )}
           <div className={styles.profile}>
             <span>{user?.displayName}</span>
             <span>
@@ -77,44 +59,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// import React from "react";
-// import { NavLink } from "react-router-dom";
-// import styles from "./Header.module.css";
-
-// const Header = () => {
-//   return (
-//     <div className={styles.header}>
-//       <ul className={styles.ul}>
-//         <li className={styles.logo}>
-//           <h1>HALAL JIBIKA</h1>
-//         </li>
-//         <li>
-//           <NavLink to="/">Home</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/jobs">Jobs</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="about">About</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/favorite">Favorite</NavLink>
-//         </li>
-//         <li>
-//           <NavLink to="/contact">Contact</NavLink>
-//         </li>
-//         <div className={styles.auth}>
-//           <li>
-//             <NavLink to="/signup">Sign Up</NavLink>
-//           </li>
-//           <li>
-//             <NavLink to="/login">Log In</NavLink>
-//           </li>
-//         </div>
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Header;

@@ -1,15 +1,10 @@
 import React from "react";
 import styles from "./Job.module.css";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Job = ({ job, setJobs }) => {
-  console.log(job);
-  const { id, logo, title, companyName, position, description } = job;
-  const deleteItem = async (id) => {
-    await axios.delete(`http://localhost:9000/jobs/${id}`);
-  };
+const Job = ({ job }) => {
+  const { id, logo, companyName, position, description } = job;
+
   return (
     <div className={styles.container}>
       <div
@@ -27,22 +22,12 @@ const Job = ({ job, setJobs }) => {
             <img src={logo} alt="" />
           </div>
           <div className={styles.text}>
-            {/* <h1>{title}</h1> */}
             <h2>{companyName}</h2>
             <h4>{position}</h4>
-            {/* <p>{description}</p> */}
           </div>
           <Link to={`/details/${id}`}>
             <button>Details</button>
           </Link>
-          <button
-            onClick={() => {
-              setJobs((prevJobs) => prevJobs.filter((job) => job.id !== id));
-              deleteItem(id);
-            }}
-          >
-            <MdOutlineFavoriteBorder />
-          </button>
         </div>
       </div>
     </div>

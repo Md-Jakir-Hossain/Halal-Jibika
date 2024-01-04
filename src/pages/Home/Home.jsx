@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div data-aos="zoom-in-right" className={styles.home}>
       <div
-        data-aos="fade-left"
+        data-aos="fade-right"
         data-aos-offset="300"
         data-aos-easing="ease-in-linear"
         className={styles.text}

@@ -42,11 +42,10 @@
   padding: 7px 25px;
   background: #000;
   border-radius: 5px;
-}
-.auth li a {
   color: #fff;
-  display: block;
+  cursor: pointer;
 }
+
 .profile {
   display: flex;
   align-items: center;

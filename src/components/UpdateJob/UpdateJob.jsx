@@ -1,97 +1,46 @@
-import React, { useEffect, useState } from "react";
-import {
-  useLoaderData,
-  useNavigate,
-  useParams,
-  useRouteLoaderData,
-} from "react-router-dom";
+import React, { useRef, useState, useEffect } from "react";
+import { useParams, useRouteLoaderData, Form } from "react-router-dom";
 import styles from "./UpdateJob.module.css";
-import axios from "axios";
 
 const UpdateJob = () => {
   const id = +useParams().updateId;
-  const jobs = useRouteLoaderData("root").data;
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState(jobs.find((job) => job.id === id));
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const jobs = useRouteLoaderData("root");
+  const formData = jobs.find((job) => job.id === id);
+  const formRef = useRef(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const postJobs = await axios.put(
-      `http://localhost:9000/jobs/${id}`,
-      formData
-    );
-    navigate("/jobs");
-    setFormData({
-      title: "",
-      logo: "",
-      companyName: "",
-      position: "",
-      description: "",
+  useEffect(() => {
+    [...formRef.current.elements].forEach((element) => {
+      const { name } = element;
+      element.value = formData[name];
     });
-  };
+  }, []);
 
   return (
     <div>
       <div className={styles.dataForm}>
-        <form className={styles.jobsForm} onSubmit={handleSubmit}>
+        <Form ref={formRef} method="put" className={styles.jobsForm}>
           <div>
             <label htmlFor="title">Title:</label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="title" name="title" />
           </div>
           <div>
             <label htmlFor="logo">Logo:</label>
-            <input
-              type="text"
-              id="logo"
-              name="logo"
-              value={formData.logo}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="logo" name="logo" />
           </div>
           <div>
             <label htmlFor="companyName">Company Name:</label>
-            <input
-              type="text"
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="companyName" name="companyName" />
           </div>
           <div>
             <label htmlFor="position">Position:</label>
-            <input
-              type="text"
-              id="position"
-              name="position"
-              value={formData.position}
-              onChange={handleInputChange}
-            />
+            <input type="text" id="position" name="position" />
           </div>
           <div>
             <label htmlFor="description">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-            />
+            <textarea id="description" name="description" />
           </div>
           <button type="submit">Submit</button>
-        </form>
+        </Form>
       </div>
     </div>
   );

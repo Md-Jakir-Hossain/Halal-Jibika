@@ -5,12 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer
-      data-aos="fade-up"
-      data-aos-offset="300"
-      data-aos-easing="ease-in-linear"
-      className={styles.footer}
-    >
+    <footer className={styles.footer}>
       <div className={styles.content}>
         <div className={styles.section}>
           <h3>Job Finder</h3>
