@@ -1,5 +1,6 @@
 import React from "react";
-import error from "../../assets/image/error.gif";
+import error from "../../assets/image/404-error-with-a-cute-animal-animate.svg";
+import styles from "./NotFound.module.css";
 
 const NotFound = () => {
   return (

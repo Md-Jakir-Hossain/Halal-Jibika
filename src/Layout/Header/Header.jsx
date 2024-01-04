@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className={`${styles.header} ${isMenuOpen ? styles.open : ""}`}>
       <div className={styles.logo}>
-        <h1>HALAL JIBIKA</h1>
+        <h1>Halal Jibika</h1>
       </div>
       <div className={styles.nav_icon} onClick={toggleMenu}>
         <FaBars className={`${styles.nav_icon}`} />

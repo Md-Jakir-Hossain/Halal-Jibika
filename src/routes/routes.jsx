@@ -17,6 +17,7 @@ import {
   updateRequest,
 } from "./routes-actions";
 import Favorite from "../components/Favorite/Favorite";
+import PrivateRoutes from "./PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const routes = createBrowserRouter([
       {
         path: "/addjobs",
         action: postRequest,
-        element: <AddJobs />,
+        element: (
+          <PrivateRoutes>
+            <AddJobs />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/details/:id",
@@ -46,7 +51,11 @@ const routes = createBrowserRouter([
       {
         path: "/update/:updateId",
         action: updateRequest,
-        element: <UpdateJob />,
+        element: (
+          <PrivateRoutes>
+            <UpdateJob />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/about",
@@ -54,7 +63,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/favorite",
-        element: <Favorite />,
+        element: (
+          <PrivateRoutes>
+            <Favorite />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/contact",

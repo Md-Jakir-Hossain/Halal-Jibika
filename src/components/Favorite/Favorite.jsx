@@ -8,7 +8,7 @@ const Favorite = () => {
   const { id, logo, companyName, position, description } = favourite;
 
   return (
-    <div>
+    <div style={{ marginTop: "2rem" }}>
       {favourite.map((fav) => (
         <div
           data-aos="fade-up"

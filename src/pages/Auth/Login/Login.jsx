@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Login.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../../../firebase/firebase.init";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from "../../../assets/image/login.gif";
 
 const Login = () => {
@@ -20,10 +20,10 @@ const Login = () => {
       [name]: value,
     });
   };
-
-  const handleFormSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, formData.email, formData.password)
+    await signInWithEmailAndPassword(auth, formData.email, formData.password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
@@ -33,7 +33,7 @@ const Login = () => {
         const errorMessage = error.message;
         console.log(errorMessage);
       });
-
+    navigate("/");
     // if (formData.email !== "" && formData.password !== "") {
     //   setLoggedIn(true);
     // }

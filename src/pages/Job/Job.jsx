@@ -3,7 +3,7 @@ import styles from "./Job.module.css";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contextApi/ContextProvider";
 
-const Job = ({ job }) => {
+const Job = ({ job, isApplied, addToApplied }) => {
   const { id, logo, companyName, position, description } = job;
   const { favourite, addToFavourite, isJobFavorite } = useContext(AuthContext);
 
@@ -33,6 +33,9 @@ const Job = ({ job }) => {
             </Link>
             <button onClick={() => addToFavourite(job)}>
               {isJobFavorite(id) ? "❤️" : "🤍"}
+            </button>
+            <button onClick={() => addToApplied(id)}>
+              {isApplied ? "apply" : "applied"}
             </button>
           </div>
         </div>

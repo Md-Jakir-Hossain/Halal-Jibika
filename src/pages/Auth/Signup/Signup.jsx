@@ -38,7 +38,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    createUser(formData.email, formData.password)
+    await createUser(formData.email, formData.password)
       .then((userCredential) => {
         const user = userCredential.user;
         userUpdateProfile(formData.name)
@@ -54,7 +54,7 @@ const Signup = () => {
       .catch((error) => {
         console.log(error);
       });
-    navigate("/login");
+    navigate("/");
   };
 
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
