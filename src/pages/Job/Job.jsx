@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Job.module.css";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contextApi/ContextProvider";
 
 const Job = ({ job }) => {
   const { id, logo, companyName, position, description } = job;
+  const { favourite, addToFavourite, isJobFavorite } = useContext(AuthContext);
 
   return (
     <div className={styles.container}>
@@ -25,9 +27,14 @@ const Job = ({ job }) => {
             <h2>{companyName}</h2>
             <h4>{position}</h4>
           </div>
-          <Link to={`/details/${id}`}>
-            <button>Details</button>
-          </Link>
+          <div className={styles.footerBtn}>
+            <Link to={`/details/${id}`}>
+              <button>Details</button>
+            </Link>
+            <button onClick={() => addToFavourite(job)}>
+              {isJobFavorite(id) ? "❤️" : "🤍"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import hero from "../../assets/image/HeroImg.jpg";
+
 import styles from "./Home.module.css";
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
         <button>Explore Now</button>
       </div>
       <div className={styles.img}>
-        <img src={hero} alt="" />
+        <img src="/Job_hunt.gif" alt="" />
       </div>
     </div>
   );

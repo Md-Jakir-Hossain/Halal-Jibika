@@ -26,11 +26,34 @@ const ContextProvider = ({ children }) => {
     });
   }, [user]);
 
+  const [favourite, setFavourite] = useState([]);
+  const addToFavourite = (job) => {
+    const isAlreadyFavorite = favourite.some((favJob) => favJob.id === job.id);
+
+    if (isAlreadyFavorite) {
+      setFavourite((prevFavorites) =>
+        prevFavorites.filter((favJob) => favJob.id !== job.id)
+      );
+    } else {
+      setFavourite((prevFavorites) => [...prevFavorites, job]);
+    }
+  };
+
+  const isJobFavorite = (id) => favourite.some((favJob) => favJob.id === id);
+
+  useEffect(() => {
+    console.log(favourite);
+  }, [favourite]);
+
   const value = {
     createUser,
     user,
     userUpdateProfile,
+    favourite,
+    addToFavourite,
+    isJobFavorite,
   };
+
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 

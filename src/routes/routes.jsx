@@ -6,7 +6,6 @@ import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
 import Signup from "../pages/Auth/Signup/Signup";
 import NotFound from "../pages/NotFound/NotFound";
-import Favorite from "../components/Favorite";
 import Login from "../pages/Auth/Login/Login";
 import Details from "../components/Details/Details";
 import UpdateJob from "../components/UpdateJob/UpdateJob";
@@ -17,6 +16,7 @@ import {
   postRequest,
   updateRequest,
 } from "./routes-actions";
+import Favorite from "../components/Favorite/Favorite";
 
 const routes = createBrowserRouter([
   {
