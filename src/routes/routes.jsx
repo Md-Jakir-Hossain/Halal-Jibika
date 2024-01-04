@@ -18,6 +18,7 @@ import {
 } from "./routes-actions";
 import Favorite from "../components/Favorite/Favorite";
 import PrivateRoutes from "./PrivateRoute";
+import Applied from "../pages/Applied/Applied";
 
 const routes = createBrowserRouter([
   {
@@ -60,6 +61,14 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/applied",
+        element: (
+          <PrivateRoutes>
+            <Applied />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/favorite",

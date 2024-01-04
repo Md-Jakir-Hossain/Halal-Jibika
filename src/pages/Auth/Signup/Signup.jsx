@@ -64,7 +64,7 @@ const Signup = () => {
 
   let errorElement;
   if (googleLoading || githubLoading) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
   if (googleError || githubError) {
     errorElement = (

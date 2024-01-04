@@ -6,7 +6,6 @@ import { AuthContext } from "../../contextApi/ContextProvider";
 const Job = ({ job, isApplied, addToApplied }) => {
   const { id, logo, companyName, position, description } = job;
   const { favourite, addToFavourite, isJobFavorite } = useContext(AuthContext);
-
   return (
     <div className={styles.container}>
       <div
@@ -35,7 +34,7 @@ const Job = ({ job, isApplied, addToApplied }) => {
               {isJobFavorite(id) ? "❤️" : "🤍"}
             </button>
             <button onClick={() => addToApplied(id)}>
-              {isApplied ? "apply" : "applied"}
+              {!isApplied ? "apply" : "applied"}
             </button>
           </div>
         </div>
