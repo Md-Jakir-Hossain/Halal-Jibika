@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./Home.module.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -17,7 +18,10 @@ const Home = () => {
           <br /> your <span>Dreams</span>
         </h1>
         <p>Your gateway to halal job opportunities</p>
-        <button>Explore Now</button>
+
+        <Link to="/jobs">
+          <button>Explore Now</button>
+        </Link>
       </div>
       <div className={styles.img}>
         <img src="/Job_hunt.gif" alt="" />

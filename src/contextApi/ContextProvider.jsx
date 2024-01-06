@@ -10,11 +10,11 @@ export const AuthContext = createContext(null);
 
 const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  // ==== create user ======
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  // ==== update profile =====
+
   const userUpdateProfile = (name) => {
     return updateProfile(auth.currentUser, {
       displayName: name,

@@ -45,6 +45,18 @@
   color: #fff;
   cursor: pointer;
 }
+.ul li a {
+  background: #e3fbdd;
+  color: #57b0c8;
+  border: 2px double black;
+  border-radius: 5px;
+  padding: 0.2rem 0.8rem;
+  cursor: pointer;
+}
+.ul li a:hover {
+  background: #3c94f8;
+  color: #fff;
+}
 
 .profile {
   display: flex;

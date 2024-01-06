@@ -1,5 +1,5 @@
 import { useRouteLoaderData } from "react-router-dom";
-import style from "./Applied.module.css";
+import styles from "./Applied.module.css";
 import Job from "./../Job/Job";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
@@ -8,11 +8,11 @@ export default function Applied() {
   const [appliedJobIds, addToApplied] = useLocalStorage("appliedJobIds");
   const isApplied = !!Object.values(appliedJobIds);
   return (
-    <div className="container">
-      <h1 className="title">
+    <div className={styles.container}>
+      <h1 className={styles.title}>
         {isApplied ? "Your Applied JOBS" : "You Don't have any Applied Job"}
       </h1>
-      <div className={style.jobs}>
+      <div className={styles.jobs}>
         {isApplied &&
           jobs.map((job) => {
             if (appliedJobIds[job.id] === undefined) return null;
